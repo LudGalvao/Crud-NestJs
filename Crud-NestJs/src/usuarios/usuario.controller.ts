@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from "@nestjs/common";
+import { Body, Controller, Get, Param, Post } from "@nestjs/common";
 
 
 @Controller('usuarios')
@@ -11,8 +11,13 @@ export class UsuarioController{
         return {body};
     }
 
+    @Get(':id')
+    async readOne(@Param() params){
+        return {usuarios:{}, params}
+    }
+
     @Get()
-    async findAll(){
+    async findAllUsuarios(){
         return this.usuarios;
     }
 }
