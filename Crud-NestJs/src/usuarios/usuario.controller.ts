@@ -18,6 +18,6 @@ export class UsuarioController{
 
     @Get()
     async findAllUsuarios(){
-        return this.usuarios; // teste 
+        return this.usuarios;
     }
 }
