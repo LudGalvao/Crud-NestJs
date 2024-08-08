@@ -1,15 +1,9 @@
-import { Body, Controller, Get, Param, Post } from "@nestjs/common";
+import { Body, Controller, Get, Param, Post, Put } from "@nestjs/common";
 
 
 @Controller('usuarios')
 export class UsuarioController{
     private usuarios = [];
-
-    @Post()
-    async create(@Body() body){
-        this.usuarios.push(body);
-        return {body};
-    }
 
     @Get(':id')
     async readOne(@Param() params){
@@ -19,5 +13,20 @@ export class UsuarioController{
     @Get()
     async findAllUsuarios(){
         return this.usuarios;
+    }
+
+    @Post()
+    async create(@Body() body){
+        this.usuarios.push(body);
+        return {body};
+    }
+
+    @Put(':id')
+    async update(@Body() body, @Param() params){
+        return{
+            method: 'put',
+            body,
+            params
+        }
     }
 }
